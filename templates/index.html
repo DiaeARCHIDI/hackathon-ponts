@@ -1,44 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-  <title>Ma page</title>
+  <head>
+    <title>Ma page</title>
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
-<body>
-  <main class="main-container">
-    <header class="header">
-      <h1 class="header-title">Mon A.I.de mémoire</h1>
-    </header>
-
-    <section id="messages-container" class="messages-container">
-      <div class="message message-ai">
-        Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-        le cours et je te répondrai.
-      </div>
-    </section>
-
-    <form id="prompt-form" class="prompt-container">
-      <label for="prompt" class="prompt-label">Message</label>
-
-      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="off" />
-
-      <button type="submit" class="button" id="submit-button">Envoyer</button>
-
-      <button type="button" class="button" id="question-button">
-        Pose-moi une question !
-      </button>
-    </form>
-
-    <!-- Voilà ma modification : Bouton pour activer le mode dark -->
-    <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
-    <!-- FIN -->
+  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
-    <script src="{{ url_for('static', filename='prompt.js') }}"></script>
-  </main>
-</body>
+  <body>
+    <main class="main-container">
+      <header class="header">
+        <h1 class="header-title">Mon A.I.de mémoire</h1>
+      </header>
 
+      <section id="messages-container" class="messages-container">
+        <div class="message message-ai">
+          Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
+          le cours et je te répondrai.
+        </div>
+      </section>
+
+      <div class="theme-container">
+        <button id="theme-button" class="round-button">Thème</button>
+        <div id="theme-options" class="background-buttons hidden">
+          <button id="books-button" class="round-button"></button>
+          <button id="beach-button" class="round-button"></button>
+          <button id="trees-button" class="round-button"></button>
+        </div>
+      </div>  
+
+      <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fas fa-paperclip"></i> <!-- Icône trombone -->
+        </label>
+  
+  
+        <input id="file-upload" type="file" name="pdf" style="display: none;" />
+        <button type="submit" class="button" id="upload-button">Upload</button>
+      </form>      
+
+
+      <form id="qcm-form" class="qcm-container hidden" method="'GET'">
+
+        <label for="prompt" class="qcm-label">Choisir une réponse :</label>
+
+        <button type="submit" class="button" id="A-button">A</button>
+        <button type="submit" class="button" id="B-button">B</button>
+        <button type="submit" class="button" id="C-button">C</button>
+        <button type="submit" class="button" id="D-button">D</button>
+        
+
+      </form>
+
+      <form id="prompt-form" class="prompt-container">
+        <label for="prompt" class="prompt-label">Message</label>
+
+        <input
+          type="text"
+          id="prompt"
+          name="prompt"
+          class="prompt-input"
+          autocomplete="off"
+        />
+
+        <button type="submit" class="button" id="submit-button">Envoyer</button>
+
+        <button type="button" class="button" id="question-button">
+          Pose-moi une question !
+        </button>
+
+        <button type="button" class="button" id="qcm-button">
+          QCM
+        </button>
+
+      </form>
+      <!-- Voilà ma modification : Bouton pour activer le mode dark -->
+      <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
+      <!-- FIN -->
+
+      <button id="zoomIn" class="controlsZoomIn">+</button>
+      
+      <button id="zoomOut" class="controlsZoomOut">-</button>
+
+      <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+    </main>
+  </body>
 </html>
+
