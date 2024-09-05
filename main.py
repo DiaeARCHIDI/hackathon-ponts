@@ -67,7 +67,6 @@ def ask_question():
 
 @app.route("/answer", methods=["POST"])
 def ans_question():
-
     answ = (
         request.form.get("prompt")
         + " "
