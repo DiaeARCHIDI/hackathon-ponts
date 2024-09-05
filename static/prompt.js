@@ -100,7 +100,6 @@ questionButton.addEventListener("click", handleQuestionClick);
 
 
 
-
 const handleQcmClick = async (event) => {
   appendAIMessage(async () => {
     const response = await fetch("/qcm", {
@@ -238,7 +237,6 @@ window.onload = function () {
     document.body.classList.add("dark-mode");
   }
 };
-
 
 
 
